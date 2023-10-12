@@ -17,8 +17,8 @@ public class Services {
     }
 
     //metode for å legge til annmeldelser
-    public void leggTilAnmeldelse(String anmeldelse) {
-        reviews.add(anmeldelse);
+    public void leggTilAnmeldelse(String review) {
+        reviews.add(review);
     }
 
     //gettere og settere

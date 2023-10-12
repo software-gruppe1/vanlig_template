@@ -1,5 +1,6 @@
 package com.example.software_engineer.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
@@ -7,7 +8,7 @@ public class ShoppingCart {
     private double totalPrice;
     private String username;
     private String email;
-    private List<Services> services;
+    private ArrayList<Services> services;
 
     public int getAntallVarer() {return serviceQuantity;}
     public void setAntallVarer(int antallVarer) {this.serviceQuantity = antallVarer;}
@@ -22,5 +23,5 @@ public class ShoppingCart {
     public void setEpostAdresse(String epostAdresse) {this.email = epostAdresse;}
 
     public List<Services> getTjenester() {return services;}
-    public void setTjenester(List<Services> tjenester) {this.services = tjenester;}
+    public void setTjenester(ArrayList<Services> tjenester) {this.services = tjenester;}
 }
