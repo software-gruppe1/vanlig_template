@@ -10,18 +10,18 @@ public class ShoppingCart {
     private String email;
     private ArrayList<Services> services;
 
-    public int getAntallVarer() {return serviceQuantity;}
-    public void setAntallVarer(int antallVarer) {this.serviceQuantity = antallVarer;}
+    public int getServiceQuantity() {return serviceQuantity;}
+    public void setServiceQuantity(int antallVarer) {this.serviceQuantity = antallVarer;}
 
     public double getTotalPris() {return totalPrice;}
     public void setTotalPris(double totalPris) {this.totalPrice = totalPris;}
 
-    public String getBrukerNavn() {return username;}
-    public void setBrukerNavn(String brukerNavn) {this.username = brukerNavn;}
+    public String getUsername() {return username;}
+    public void setUsername(String brukerNavn) {this.username = brukerNavn;}
 
-    public String getEpostAdresse() {return email;}
-    public void setEpostAdresse(String epostAdresse) {this.email = epostAdresse;}
+    public String getEmail() {return email;}
+    public void setEmail(String epostAdresse) {this.email = epostAdresse;}
 
-    public List<Services> getTjenester() {return services;}
-    public void setTjenester(ArrayList<Services> tjenester) {this.services = tjenester;}
+    public List<Services> getServices() {return services;}
+    public void setServices(ArrayList<Services> tjenester) {this.services = tjenester;}
 }

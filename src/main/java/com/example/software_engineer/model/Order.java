@@ -18,6 +18,6 @@ public class Order {
     public ArrayList<Services> getServices() {return services;}
     public void setServices(ArrayList<Services> services) {this.services = services;}
 
-    public LocalDateTime getBestillingsTidspunkt() {return orderTime;}
-    public void setBestillingsTidspunkt(LocalDateTime bestillingsTidspunkt) {this.orderTime = bestillingsTidspunkt;}
+    public LocalDateTime getOrderTime() {return orderTime;}
+    public void setOrderTime(LocalDateTime bestillingsTidspunkt) {this.orderTime = bestillingsTidspunkt;}
 }
