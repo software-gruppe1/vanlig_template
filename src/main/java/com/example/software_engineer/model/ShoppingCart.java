@@ -13,8 +13,8 @@ public class ShoppingCart {
     public int getServiceQuantity() {return serviceQuantity;}
     public void setServiceQuantity(int antallVarer) {this.serviceQuantity = antallVarer;}
 
-    public double getTotalPris() {return totalPrice;}
-    public void setTotalPris(double totalPris) {this.totalPrice = totalPris;}
+    public double getTotalPrice() {return totalPrice;}
+    public void setTotalPrice(double totalPris) {this.totalPrice = totalPris;}
 
     public String getUsername() {return username;}
     public void setUsername(String brukerNavn) {this.username = brukerNavn;}

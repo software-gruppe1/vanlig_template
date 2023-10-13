@@ -4,9 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Services {
-    private String serviceName;
+    private String serviceName, description;
     private LocalDateTime dateTime;
-    private String description;
     private ArrayList<String> reviews= new ArrayList<>();
 
     //konstuktør
@@ -22,7 +21,11 @@ public class Services {
     }
 
     //gettere og settere
-    public ArrayList<String> getAnmeldelser() {return reviews;}
+    public ArrayList<String> getReviews() {return reviews;}
+
+    public void setReviews(ArrayList<String> reviews) {
+        this.reviews = reviews;
+    }
 
     public String getServiceName() {return serviceName;}
     public void setServiceName(String serviceName) {this.serviceName = serviceName;}
@@ -32,6 +35,10 @@ public class Services {
 
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
+
+    //TODO Lage en metode for reviews
+
+
 
 
 }

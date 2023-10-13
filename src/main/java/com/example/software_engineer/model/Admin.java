@@ -1,11 +1,9 @@
 package com.example.software_engineer.model;
 
 public class Admin implements Account{
-    private String username;
-    private String password;
-    private String fullName;
-    private String email;
-
+    private String username, fullName, password, email;
+    private ShoppingCart shopping_cart;
+    private Order order;
 
     public Admin(String username, String password, String fullName, String email) {
         this.username = username;
@@ -24,4 +22,20 @@ public class Admin implements Account{
 
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
+
+    public ShoppingCart getShopping_cart() {
+        return shopping_cart;
+    }
+
+    public void setShopping_cart(ShoppingCart shopping_cart) {
+        this.shopping_cart = shopping_cart;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }
