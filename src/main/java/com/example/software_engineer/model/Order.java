@@ -19,5 +19,5 @@ public class Order {
     public void setServices(ArrayList<Services> services) {this.services = services;}
 
     public LocalDateTime getOrderTime() {return orderTime;}
-    public void setOrderTime(LocalDateTime bestillingsTidspunkt) {this.orderTime = bestillingsTidspunkt;}
+    public void setOrderTime(LocalDateTime orderTime) {this.orderTime = orderTime;}
 }
