@@ -9,6 +9,16 @@ public class Order {
     private ArrayList<Services> services;
     private LocalDateTime orderTime;
 
+    public Order(int orderId, double totalPrice, LocalDateTime orderTime){
+        this.orderId = orderId;
+        this.totalPrice = totalPrice;
+        this.orderTime = orderTime;
+
+    }
+
+    public Order(){
+    }
+
     public int getOrderId() {return orderId;}
     public void setOrderId(int orderId) {this.orderId = orderId;}
 
@@ -20,4 +30,6 @@ public class Order {
 
     public LocalDateTime getOrderTime() {return orderTime;}
     public void setOrderTime(LocalDateTime orderTime) {this.orderTime = orderTime;}
+
+    //TODO Metode som overfører data fra shoppingcart til ordre og tømmer shoppingcarten.
 }

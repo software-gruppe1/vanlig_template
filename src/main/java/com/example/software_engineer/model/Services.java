@@ -14,7 +14,10 @@ public class Services {
         this.serviceName = serviceName;
         this.dateTime = dateTime;
         this.description = description;
+
     }
+
+
     public Services() {
     }
 
@@ -44,5 +47,7 @@ public class Services {
 
     public ArrayList<Integer> getRating() {return rating;}
     public void setRating(ArrayList<Integer> rating) {this.rating = rating;}
+
+    //TODO  LAGE METODER: OPPRETTE, ENDRE, SLETTE
 }
 
