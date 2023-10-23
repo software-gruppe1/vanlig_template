@@ -1,10 +1,20 @@
 package com.example.software_engineer.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/user")
-
+@RequestMapping("/user")
 public class UserController {
+
+    @GetMapping("/profile")
+    public String getUserProfile() {
+        return "UserProfile";
+    }
+
+    @PostMapping("/updateProfile")
+    public void updateProfile(@RequestBody User user) {
+        return user.getUsername() + " Updated!";
+    }
+
 }
