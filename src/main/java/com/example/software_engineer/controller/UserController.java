@@ -1,6 +1,7 @@
 package com.example.software_engineer.controller;
 
 
+import com.example.software_engineer.model.Account;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,9 +13,8 @@ public class UserController {
         return "UserProfile";
     }
 
-    @PostMapping("/updateProfile")
-    public void updateProfile(@RequestBody User user) {
-        return user.getUsername() + " Updated!";
-    }
-
+    /*@PostMapping("/updateProfile")
+    public void updateProfile(@RequestBody Account user) {
+        return Account.getUsername() + " Updated!";
+    }*/
 }

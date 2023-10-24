@@ -1,6 +1,7 @@
 package com.example.software_engineer.controller;
 
 
+import com.example.software_engineer.model.Account;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,7 +14,7 @@ public class AdminController {
     }
 
     @PostMapping("/createUser")
-    public String createUser(@RequestBody User user) {
+    public String createUser(@RequestBody Account user) {
         return "User Registered";
     }
 
