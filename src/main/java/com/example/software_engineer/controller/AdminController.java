@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @GetMapping("/removeUser/{userId}")
+    @DeleteMapping("/removeUser/{userId}")
     public String removeUser(@PathVariable Long userId) {
         return userId + " Removed";
     }
@@ -17,7 +17,7 @@ public class AdminController {
         return "User Registered";
     }
 
-    @PostMapping("removeUser/[userId]")
+    @DeleteMapping("removeUser/{userId}")
     public String deleteAd(@PathVariable Long adId) {
         return adId + " Removed";
     }
