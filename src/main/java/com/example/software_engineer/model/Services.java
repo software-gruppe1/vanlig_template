@@ -19,6 +19,13 @@ public class Services {
 
     }
 
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
 
     public Services() {
     }
