@@ -6,15 +6,17 @@ import java.util.ArrayList;
 public class Services {
     private String serviceName, description;
     private LocalDateTime dateTime;
-    private ArrayList<String> reviews= new ArrayList<>();
-    private ArrayList<Integer> rating = new ArrayList<>();
+    private ArrayList<Reviews> all_reviews = new ArrayList<>();
+    private String account;
+
     private String UID;
 
     //konstuktør
-    public Services(String serviceName,LocalDateTime dateTime,String description, String UID) {
+    public Services(String serviceName,LocalDateTime dateTime,String description, String account, String UID) {
         this.serviceName = serviceName;
         this.dateTime = dateTime;
         this.description = description;
+        this.account = account;
         this.UID = UID;
 
     }
@@ -31,19 +33,14 @@ public class Services {
     }
 
     //metode for å legge til annmeldelser
-    public void placeReview(String review) {
-        reviews.add(review);
+    public void placeReview(Reviews review) {
+        all_reviews.add(review);
     }
 
-    //metode for å legge til vurdering
-    public void placeRating(int number) {
-        if (number < 1 || number > 10) {
-            throw new IllegalArgumentException("You can only rate from 1 to 10!");}
-        rating.add(number);}
-
     //gettere og settere
-    public ArrayList<String> getReviews() {return reviews;}
-    public void setReviews(ArrayList<String> reviews) {this.reviews = reviews;}
+    public ArrayList<Reviews> getAll_reviews() {
+        return new ArrayList<>(all_reviews);
+    }
 
     public String getServiceName() {return serviceName;}
     public void setServiceName(String serviceName) {this.serviceName = serviceName;}
@@ -54,8 +51,13 @@ public class Services {
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
-    public ArrayList<Integer> getRating() {return rating;}
-    public void setRating(ArrayList<Integer> rating) {this.rating = rating;}
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
 
     //TODO  LAGE METODER: OPPRETTE, ENDRE, SLETTE
 }
