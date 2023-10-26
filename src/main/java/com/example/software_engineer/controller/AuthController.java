@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
-    /*@PostMapping("/login")
+    /*
+    @PostMapping("/login")
     public String login(@RequestBody LoginRequest request) {
         return "Logged_in";
     }

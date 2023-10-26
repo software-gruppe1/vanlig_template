@@ -5,7 +5,7 @@ import com.example.software_engineer.model.Account;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/admin")
 public class AdminController {
 
     @DeleteMapping("/removeUser/{userId}")
