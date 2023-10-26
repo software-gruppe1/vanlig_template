@@ -8,12 +8,14 @@ public class Services {
     private LocalDateTime dateTime;
     private ArrayList<String> reviews= new ArrayList<>();
     private ArrayList<Integer> rating = new ArrayList<>();
+    private String UID;
 
     //konstuktør
-    public Services(String serviceName,LocalDateTime dateTime,String description) {
+    public Services(String serviceName,LocalDateTime dateTime,String description, String UID) {
         this.serviceName = serviceName;
         this.dateTime = dateTime;
         this.description = description;
+        this.UID = UID;
 
     }
 
