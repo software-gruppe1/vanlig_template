@@ -1,6 +1,8 @@
 package com.example.software_engineer;
 
+import com.example.software_engineer.model.Reviews;
 import com.example.software_engineer.model.Services;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -14,21 +16,10 @@ public class ServiceTest {
             // Opprett en ny Review-instans
             Services review = new Services();
             // Legg til en anmeldelse
-            review.placeReview("Best service!");
+            Reviews review_text = new Reviews("Joe", "Best service!", 10);
             // Sjekk at anmeldelsen ble lagt til
-            Assertions.assertEquals("Best service!", review.getReviews().get(0));
-        }
-    }
-    @Nested
-    class placeRatingTest{
-        @Test
-        public void isPlaceRatingMethodWorking() {
-            // Opprett en ny Rating-instans
-            Services rating = new Services();
-            // Legg til en vurdering
-            rating.placeRating(5);
-            // Sjekk at vurderingen ble lagt til
-            Assertions.assertEquals(5, rating.getRating().get(0));
+            review.placeReview(review_text);
+            Assertions.assertEquals("Best service!", review.getAll_reviews().get(0).getReview());
         }
     }
 }
