@@ -1,18 +1,18 @@
 package com.example.software_engineer.model;
 
+import java.util.ArrayList;
+
 public abstract class Account {
     private String username, fullName, password, email;
     private ShoppingCart shopping_cart;
-    private Order order;
+    private ArrayList<Order> orders;
 
-    public Account(String userName, String fullName, String password, String email, ShoppingCart shoppingCart, Order order) {
+    public Account(String userName, String fullName, String password, String email, ShoppingCart shoppingCart) {
         this.username = userName;
         this.fullName = fullName;
         this.password = password;
         this.email = email;
         this.shopping_cart = shoppingCart;
-        this.order = order;
-
     }
 
     public String getUsername() {
@@ -55,11 +55,12 @@ public abstract class Account {
         this.shopping_cart = shopping_cart;
     }
 
-    public Order getOrder() {
-        return order;
+    public ArrayList<Order> getOrder() {
+        return new ArrayList<Order>(orders);
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void add_order(Order order) {
+        orders.add(order);
     }
+    //TODO lage en metode som legger til ordre FINITO
 }

@@ -25,8 +25,9 @@ public class Order {
     public double getTotalPrice() {return totalPrice;}
     public void setTotalPrice(double totalPrice) {this.totalPrice = totalPrice;}
 
-    public ArrayList<Services> getServices() {return services;}
-    public void setServices(ArrayList<Services> services) {this.services = services;}
+    public ArrayList<Services> getServices() {return new ArrayList<Services>(services) ;}
+    public void add_services(Services service) {
+        services.add(service);}
 
     public LocalDateTime getOrderTime() {return orderTime;}
     public void setOrderTime(LocalDateTime orderTime) {this.orderTime = orderTime;}
