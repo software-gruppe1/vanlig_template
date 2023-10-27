@@ -6,15 +6,16 @@ import java.util.ArrayList;
 public class Services {
     private String serviceName, description;
     private LocalDateTime dateTime;
+    private int price;
     private ArrayList<Reviews> all_reviews = new ArrayList<>();
     private String account;
-
     private String UID;
 
     //konstuktør
-    public Services(String serviceName,LocalDateTime dateTime,String description, String account, String UID) {
+    public Services(String serviceName,LocalDateTime dateTime, int price, String description, String account, String UID) {
         this.serviceName = serviceName;
         this.dateTime = dateTime;
+        this.price = price;
         this.description = description;
         this.account = account;
         this.UID = UID;
@@ -47,6 +48,14 @@ public class Services {
 
     public LocalDateTime getDateTime() {return dateTime;}
     public void setDateTime(LocalDateTime dateTime) {this.dateTime = dateTime;}
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
