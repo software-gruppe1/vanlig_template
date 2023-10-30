@@ -3,25 +3,18 @@ package com.example.software_engineer.model;
 import java.util.ArrayList;
 
 public abstract class Account {
-    private String username, fullName, password, email;
+    private String fullName, password, email;
     private ShoppingCart shopping_cart;
     private ArrayList<Order> orders;
 
-    public Account(String userName, String fullName, String password, String email, ShoppingCart shoppingCart) {
-        this.username = userName;
+    public Account( String fullName, String password, String email, ShoppingCart shoppingCart) {
         this.fullName = fullName;
         this.password = password;
         this.email = email;
         this.shopping_cart = shoppingCart;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getFullName() {
         return fullName;
@@ -56,7 +49,7 @@ public abstract class Account {
     }
 
     public ArrayList<Order> getOrder() {
-        return new ArrayList<Order>(orders);
+        return new ArrayList<>(orders);
     }
 
     public void add_order(Order order) {
