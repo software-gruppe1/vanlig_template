@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ShoppingCart {
     private double totalPrice;
-    private ArrayList<Services> services;
+    private ArrayList<Services> services = new ArrayList<>();
 
     public ShoppingCart(){
     }
@@ -14,7 +14,7 @@ public class ShoppingCart {
     public double getTotalPrice() {return totalPrice;}
     public void setTotalPrice(double totalPris) {this.totalPrice = totalPris;}
 
-    public ArrayList<Services> getServices() {return new ArrayList<Services>(services) ;}
+    public ArrayList<Services> getServices() {return new ArrayList<>(services) ;}
     public void add_services(Services service) {
         services.add(service);}
     //TODO add_services metoden bør gjøre det sånn at totalsummen blir endret

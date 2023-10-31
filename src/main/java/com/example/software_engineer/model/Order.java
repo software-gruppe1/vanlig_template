@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Order {
     private int orderId;
     private double totalPrice;
-    private ArrayList<Services> services;
+    private ArrayList<Services> services = new ArrayList<>();
     private LocalDateTime orderTime;
 
     public Order(int orderId, double totalPrice, LocalDateTime orderTime){
@@ -25,7 +25,7 @@ public class Order {
     public double getTotalPrice() {return totalPrice;}
     public void setTotalPrice(double totalPrice) {this.totalPrice = totalPrice;}
 
-    public ArrayList<Services> getServices() {return new ArrayList<Services>(services) ;}
+    public ArrayList<Services> getServices() {return new ArrayList<>(services) ;}
     public void add_services(Services service) {
         services.add(service);}
 

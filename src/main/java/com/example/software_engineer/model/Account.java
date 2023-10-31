@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Account {
     private String fullName, password, email;
     private ShoppingCart shopping_cart;
-    private ArrayList<Order> orders;
+    private ArrayList<Order> orders = new ArrayList<>();
 
     public Account( String fullName, String password, String email, ShoppingCart shoppingCart) {
         this.fullName = fullName;
