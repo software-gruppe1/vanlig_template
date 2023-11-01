@@ -17,6 +17,7 @@ public class AuthController {
     @PostMapping("/register")
     public String register(@RequestBody RegisterRequest request) {
         return "Registered";
-    }*/
+    }
+    */
 
 }

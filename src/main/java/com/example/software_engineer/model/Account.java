@@ -1,27 +1,20 @@
 package com.example.software_engineer.model;
 
-public abstract class Account {
-    private String username, fullName, password, email;
-    private ShoppingCart shopping_cart;
-    private Order order;
+import java.util.ArrayList;
 
-    public Account(String userName, String fullName, String password, String email, ShoppingCart shoppingCart, Order order) {
-        this.username = userName;
+public abstract class Account {
+    private String fullName, password, email;
+    private ShoppingCart shopping_cart;
+    private ArrayList<Order> orders = new ArrayList<>();  //MAY BE FINAL
+
+    public Account( String fullName, String password, String email, ShoppingCart shoppingCart) {
         this.fullName = fullName;
         this.password = password;
         this.email = email;
         this.shopping_cart = shoppingCart;
-        this.order = order;
-
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getFullName() {
         return fullName;
@@ -55,11 +48,17 @@ public abstract class Account {
         this.shopping_cart = shopping_cart;
     }
 
-    public Order getOrder() {
-        return order;
+    public ArrayList<Order> getOrder() {
+        return new ArrayList<>(orders);
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void add_order(Order order) {
+        orders.add(order);
     }
+    //TODO lage en metode som legger til ordre FINITO
+    //TODO metode for å hente og slette en spesifikk order (Hva tenkte jeg på her?)
+
+
+
+
 }

@@ -4,22 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    private int serviceQuantity;
     private double totalPrice;
-    private ArrayList<Services> services;
+    private ArrayList<String> servicesUID = new ArrayList<>(); //MAY BE FINAL
 
-    public ShoppingCart(int serviceQuantity, double totalPrice){
-        this.serviceQuantity = serviceQuantity;
-        this.totalPrice = totalPrice;
-
+    public ShoppingCart(){
     }
 
-    public int getServiceQuantity() {return serviceQuantity;}
-    public void setServiceQuantity(int amount_services) {this.serviceQuantity = amount_services;}
 
     public double getTotalPrice() {return totalPrice;}
     public void setTotalPrice(double totalPris) {this.totalPrice = totalPris;}
 
-    public List<Services> getServices() {return services;}
-    public void setServices(ArrayList<Services> tjenester) {this.services = tjenester;}
+    public ArrayList<String> getServices() {return new ArrayList<>(servicesUID) ;}
+    public void add_services(Services service, String serviceID) {
+        servicesUID.add(serviceID);
+        totalPrice += service.getPrice();
+    }
+    //TODO add_services metoden bør gjøre det sånn at totalsummen blir endret
+    //TODO lage en metode for å slette individuelle services i shoppingcarten
+    //TODO lage en metode for å for å slette ALLE servcies i shoppingcarten
+
+
+    public void delete_service(){
+
+    }
+
+    public void delete_shoppingcart(){
+
+
+    }
 }

@@ -13,12 +13,7 @@ public class AdminController {
         return userId + " Removed";
     }
 
-    @PostMapping("/createUser")
-    public String createUser(@RequestBody Account user) {
-        return "User Registered";
-    }
-
-    @DeleteMapping("removeUser/{userId}")
+    @DeleteMapping("deletead/{adId}")
     public String deleteAd(@PathVariable Long adId) {
         return adId + " Removed";
     }
