@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Account {
     private String fullName, password, email;
     private ShoppingCart shopping_cart;
-    private ArrayList<Order> orders = new ArrayList<>();
+    private ArrayList<Order> orders = new ArrayList<>();  //MAY BE FINAL
 
     public Account( String fullName, String password, String email, ShoppingCart shoppingCart) {
         this.fullName = fullName;
@@ -56,4 +56,9 @@ public abstract class Account {
         orders.add(order);
     }
     //TODO lage en metode som legger til ordre FINITO
+    //TODO metode for å hente og slette en spesifikk order (Hva tenkte jeg på her?)
+
+
+
+
 }

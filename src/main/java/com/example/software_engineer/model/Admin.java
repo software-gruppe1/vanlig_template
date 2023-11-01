@@ -11,5 +11,9 @@ public class Admin extends Account{
         return "Admin";
     }
     //TODO ADMIN BØR HA ACCESS TIL Å SLETTE ANNONSER OG ANDRE ADMIN EVNER
+    private void delete_services(){
+
+    }
+
 
 }
