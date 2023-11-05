@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -121,9 +122,21 @@ public class JSONRepository {
     }
 
     public void changeService(String servicesName, String description, LocalDate date, int price, String account, String UID){
+        if(account.equals("User") && spesificService(UID).getAccount().equals("User")){
+            spesificService(UID).setServiceName(servicesName);
+            spesificService(UID).setDescription(description);
+            spesificService(UID).setDate(date);
+            spesificService(UID).setPrice(price);
+        } else if (account.equals("Admin")) {
+            spesificService(UID).setServiceName(servicesName);
+            spesificService(UID).setDescription(description);
+            spesificService(UID).setDate(date);
+            spesificService(UID).setPrice(price);
+        }
     }
 
     public void addReview (String UID, Reviews reviews){
+        spesificService(UID).placeReview(reviews);
     }
 
     public void addInShoppingcart(String account, String UID){
