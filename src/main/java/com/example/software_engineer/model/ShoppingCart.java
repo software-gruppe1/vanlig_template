@@ -1,7 +1,7 @@
 package com.example.software_engineer.model;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ShoppingCart {
     private double totalPrice;
@@ -24,11 +24,15 @@ public class ShoppingCart {
     //TODO lage en metode for å for å slette ALLE servcies i shoppingcarten
 
 
-    public void delete_service(){
+    public void delete_service(Services service, String serviceID){
+        servicesUID.remove(serviceID);
+        totalPrice-= service.getPrice();
 
     }
 
-    public void delete_shoppingcart(){
+    public void delete_shoppingcart(Services services){
+        servicesUID.clear();
+        totalPrice = 0;
 
 
     }
