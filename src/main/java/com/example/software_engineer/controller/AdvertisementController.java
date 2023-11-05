@@ -19,7 +19,7 @@ public class AdvertisementController {
 
     @PostMapping("/services")
     public ResponseEntity<Void> createService(@RequestBody Services service) {
-        jsonRepository.createService(service.getServiceName(),
+        jsonRepository.createService(service.getServiceName(), service.getDescription(),
                 service.getDate(), service.getPrice(), service.getAccount(), service.getUID());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
