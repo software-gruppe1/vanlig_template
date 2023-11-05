@@ -37,4 +37,14 @@ public class AdvertisementController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @GetMapping("/{UID}")
+    public ResponseEntity<Services> getSpecificService(@PathVariable String UID) {
+        Services service = jsonRepository.spesificService(UID);
+        if (service != null) {
+            return new ResponseEntity<>(service, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
