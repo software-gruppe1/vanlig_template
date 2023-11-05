@@ -5,6 +5,7 @@ import com.example.software_engineer.model.Reviews;
 import com.example.software_engineer.model.Services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -77,25 +78,46 @@ public class JSONRepository {
     }
 
     public List<Services> allServices(){
-        return null;
+
+        return new ArrayList<>(servicesList);
     }
 
     public List<Account> allAccount(){
-        return null;
+        return new ArrayList<>(accountList);
     }
 
     public Services spesificService(String UID){
+        for (Services service : servicesList){
+            if (service.getUID().equals(UID)){
+                return service;
+            }
+        }
         return null;
     }
 
     public Account spesificAccount(String user){
+        for (Account account : accountList){
+            if (account.getUsername().equals(user)){
+                return account;
+            }
+        }
         return null;
     }
 
     public void deleteService(String account, String UID){
+        Services service = spesificService(UID);
+        if(account.equals("User") && service.getAccount().equals("User")){
+            accountList.remove(service);
+        } else if (account.equals("Admin")) {
+            accountList.remove(service);
+        }
+        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
     }
 
     public void createService(String servicesName, String description, LocalDate date, int price, String account, String UID){
+        Services service = new Services(servicesName, date, price, description, account, UID);
+        servicesList.add(service);
+        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
     }
 
     public void changeService(String servicesName, String description, LocalDate date, int price, String account, String UID){
