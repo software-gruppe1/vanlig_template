@@ -1,6 +1,7 @@
 package com.example.software_engineer.repository;
 
 import com.example.software_engineer.model.Account;
+import com.example.software_engineer.model.Order;
 import com.example.software_engineer.model.Reviews;
 import com.example.software_engineer.model.Services;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -140,12 +141,15 @@ public class JSONRepository {
     }
 
     public void addInShoppingcart(String account, String UID){
+        spesificAccount(account).getShopping_cart().add_services(spesificService(UID),UID);
     }
 
     public void deleteShoppingCart (String account){
+        spesificAccount(account).getShopping_cart().delete_shoppingcart();
     }
 
     public void deleteOneServiceFromShoppingcart(String account, String UID){
+        spesificAccount(account).getShopping_cart().delete_service();
     }
 
     public void createOrder(String account){
