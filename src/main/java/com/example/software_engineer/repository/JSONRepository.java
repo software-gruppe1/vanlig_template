@@ -110,9 +110,9 @@ public class JSONRepository {
     public void deleteService(String account, String UID){
         Services service = spesificService(UID);
         if(account.equals("User") && service.getAccount().equals("User")){
-            accountList.remove(service);
+            servicesList.remove(service);
         } else if (account.equals("Admin")) {
-            accountList.remove(service);
+            servicesList.remove(service);
         }
         writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
     }
@@ -145,24 +145,25 @@ public class JSONRepository {
 
     public void addInShoppingcart(String account, String UID){
         spesificAccount(account).getShopping_cart().add_services(spesificService(UID),UID);
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
+        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
     }
 
     public void deleteShoppingCart (String account){
         spesificAccount(account).getShopping_cart().delete_shoppingcart();
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
+        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
     }
 
     public void deleteOneServiceFromShoppingcart(String account, String UID){
         spesificAccount(account).getShopping_cart().delete_service(spesificService(UID), UID);
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
+        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
     }
 
     public void createOrder(String account){
         Order order = new Order(spesificAccount(account).getShopping_cart().getTotalPrice(), LocalDate.now());
         order.add_allServices(spesificAccount(account).getShopping_cart().getServices());
+        spesificAccount(account).add_order(order);
         deleteShoppingCart(account);
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
+        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
     }
 
 
