@@ -5,13 +5,17 @@ import java.util.ArrayList;
 public abstract class Account {
     private String fullName, password, email;
     private ShoppingCart shopping_cart;
+
+    private String username;
+
     private ArrayList<Order> orders = new ArrayList<>();  //MAY BE FINAL
 
-    public Account( String fullName, String password, String email, ShoppingCart shoppingCart) {
+    public Account( String fullName, String password, String email, ShoppingCart shoppingCart, String username) {
         this.fullName = fullName;
         this.password = password;
         this.email = email;
         this.shopping_cart = shoppingCart;
+        this.username = username;
     }
 
 
@@ -48,6 +52,14 @@ public abstract class Account {
         this.shopping_cart = shopping_cart;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public ArrayList<Order> getOrder() {
         return new ArrayList<>(orders);
     }
@@ -57,6 +69,7 @@ public abstract class Account {
     }
     //TODO lage en metode som legger til ordre FINITO
     //TODO metode for å hente og slette en spesifikk order (Hva tenkte jeg på her?)
+
 
 
 

@@ -25,8 +25,8 @@ public class Order {
     public void setTotalPrice(double totalPrice) {this.totalPrice = totalPrice;}
 
     public ArrayList<String> getServices() {return new ArrayList<>(servicesUID) ;}
-    public void add_services(String serviceID) {
-        servicesUID.add(serviceID);
+    public void add_allServices(ArrayList<String> services) {
+        servicesUID.addAll(services);
 
     }
 
@@ -35,11 +35,11 @@ public class Order {
 
     //TODO Metode som overfører data fra shoppingcart til ordre og tømmer shoppingcarten.
 
-    public void list_transfer(ShoppingCart shoppingCart){
+
         //https://www.geeksforgeeks.org/copy-elements-of-one-arraylist-to-another-arraylist-in-java/
 
         //empty_shoppingcart
 
-    }
+
 
 }
