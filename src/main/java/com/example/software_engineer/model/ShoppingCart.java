@@ -30,7 +30,7 @@ public class ShoppingCart {
 
     }
 
-    public void delete_shoppingcart(Services services){
+    public void delete_shoppingcart(){
         servicesUID.clear();
         totalPrice = 0;
 
