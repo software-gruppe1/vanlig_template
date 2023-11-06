@@ -34,8 +34,8 @@ public class AdminController {
     }
 
     @DeleteMapping("/services/{UID}")
-    public ResponseEntity<Void> deleteService(@PathVariable String UID) {
-        jsonRepository.deleteService(null, UID);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Services> deleteService(@PathVariable String UID) {
+        jsonRepository.deleteService("Admin", UID);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

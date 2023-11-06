@@ -24,27 +24,30 @@ public class UserController {
     }
 
     @PostMapping("/cart/{UID}")
-    public ResponseEntity<Void> addToShoppingCart(@RequestBody String account, @PathVariable String UID) {
+    public ResponseEntity<Account> addToShoppingCart(@RequestBody String account, @PathVariable String UID) {
         jsonRepository.addInShoppingcart(account, UID);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/cart/{UID}")
-    public ResponseEntity<Void> removeFromShoppingCart(@RequestBody String account, @PathVariable String UID) {
+    public ResponseEntity<Account> removeFromShoppingCart(@RequestBody String account, @PathVariable String UID) {
         jsonRepository.deleteOneServiceFromShoppingcart(account, UID);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/cart")
-    public ResponseEntity<Void> clearShoppingCart(@RequestBody String account) {
+    public ResponseEntity<Account> clearShoppingCart(@RequestBody String account) {
         jsonRepository.deleteShoppingCart(account);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /* Kommentert ut for øyeblikket.
     @PostMapping("/order")
-    public ResponseEntity<Void> createOrder(@RequestBody String account) {
-        jsonRepository.createOrder(account);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<?> createOrder(@RequestBody String accountUsername) {
+        Order order = jsonRepository.createOrder(accountUsername);
+        return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
+    */
+
 
 }
