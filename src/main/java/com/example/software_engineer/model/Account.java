@@ -2,19 +2,17 @@ package com.example.software_engineer.model;
 
 import java.util.ArrayList;
 
-public abstract class Account {
+public class Account {
     private String fullName, password, email;
-    private ShoppingCart shopping_cart;
-
+    private ShoppingCart shopping_cart = new ShoppingCart();
     private String username;
 
     private ArrayList<Order> orders = new ArrayList<>();  //MAY BE FINAL
 
-    public Account( String fullName, String password, String email, ShoppingCart shoppingCart, String username) {
+    public Account( String fullName, String password, String email, String username) {
         this.fullName = fullName;
         this.password = password;
         this.email = email;
-        this.shopping_cart = shoppingCart;
         this.username = username;
     }
 
