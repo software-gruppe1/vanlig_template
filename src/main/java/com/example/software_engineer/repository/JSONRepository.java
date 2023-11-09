@@ -3,6 +3,8 @@ package com.example.software_engineer.repository;
 import com.example.software_engineer.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -17,25 +19,10 @@ import java.util.List;
 public class JSONRepository {
     private List<Account> accountList = new ArrayList<>();
     private List<Services> servicesList = new ArrayList<>();
+    private String servicepath;
+    private String accountpath;
 
     public JSONRepository(){
-        servicesList.clear();
-        accountList.clear();
-        Account user = new Account("Ole Nordmann", "User123", "ole_nordmann@gmail.com","User");
-        Account admin = new Account("Ali A", "Admin123", "ali_a@gmail.com","Admin");
-        accountList.add(user);
-        accountList.add(admin);
-
-        Services service1 = new Services("museum of egypt", LocalDate.of(2023, 12, 23), 699, "A beautiful museum stolen by the british", "Admin", "1");
-        Services service2 = new Services("city guide in paris", LocalDate.of(2024, 2, 15), 999, "a wonderful guide", "User", "2");
-        Services service3 = new Services("bungee jumping in Norway", LocalDate.of(2025, 6, 15), 500, "Jump to your death, it's at least fun", "Admin", "3");
-
-        servicesList.add(service1);
-        servicesList.add(service2);
-        servicesList.add(service3);
-
-        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/services.json", servicesList);
     }
 
     public List<Account> readAccountFromJson(String filepath){
@@ -178,6 +165,5 @@ public class JSONRepository {
         deleteShoppingCart(account);
         writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
     }
-
 
 }

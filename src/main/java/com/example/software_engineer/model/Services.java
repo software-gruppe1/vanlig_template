@@ -69,6 +69,18 @@ public class Services {
         this.account = account;
     }
 
+    @Override
+    public String toString() {
+        return "Services{" +
+                "serviceName='" + serviceName + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", price=" + price +
+                ", all_reviews=" + all_reviews +
+                ", account='" + account + '\'' +
+                ", UID='" + UID + '\'' +
+                '}';
+    }
     //TODO  LAGE METODER: OPPRETTE, ENDRE, SLETTE
 }
 

@@ -1,15 +1,21 @@
 package com.example.software_engineer.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 public class Account {
     private String fullName, password, email;
     private ShoppingCart shopping_cart = new ShoppingCart();
     private String username;
-
     private ArrayList<Order> orders = new ArrayList<>();  //MAY BE FINAL
 
-    public Account( String fullName, String password, String email, String username) {
+    @JsonCreator
+    public Account(@JsonProperty("fullName") String fullName,
+                   @JsonProperty("password") String password,
+                   @JsonProperty("email") String email,
+                   @JsonProperty("username") String username) {
         this.fullName = fullName;
         this.password = password;
         this.email = email;
@@ -65,11 +71,16 @@ public class Account {
     public void add_order(Order order) {
         orders.add(order);
     }
-    //TODO lage en metode som legger til ordre FINITO
-    //TODO metode for å hente og slette en spesifikk order (Hva tenkte jeg på her?)
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Account{" +
+                "fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", shopping_cart=" + shopping_cart +
+                ", username='" + username + '\'' +
+                ", orders=" + orders +
+                '}';
+    }
 }

@@ -12,14 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping(value = "/admin")
 public class AdminController {
+    private final JSONRepository jsonRepository = new JSONRepository();
 
-    private final JSONRepository jsonRepository;
-
-    public AdminController(JSONRepository jsonRepository) {
-        this.jsonRepository = jsonRepository;
-    }
 
     @GetMapping("/services")
     public ResponseEntity<List<Services>> getAllServices() {
