@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/admin")
 public class AdminController {
-    private final JSONRepository jsonRepository = new JSONRepository();
+    private final JSONRepository jsonRepository = new JSONRepository("src/main/java/com/example/software_engineer/data/account.json", "src/main/java/com/example/software_engineer/data/services.json");
 
 
     @GetMapping("/services")

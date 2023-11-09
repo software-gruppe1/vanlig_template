@@ -15,14 +15,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Repository
+
 public class JSONRepository {
     private List<Account> accountList = new ArrayList<>();
     private List<Services> servicesList = new ArrayList<>();
-    private String servicepath;
-    private String accountpath;
+    private String servicePath;
+    private String accountPath;
 
-    public JSONRepository(){
+    public JSONRepository(String accountPath, String servicePath){
+        this.accountPath = accountPath;
+        this.servicePath = servicePath;
     }
 
     public List<Account> readAccountFromJson(String filepath){
@@ -78,17 +80,17 @@ public class JSONRepository {
     }
 
     public List<Services> allServices(){
-        this.servicesList = readServicesFromJson("src/main/java/com/example/software_engineer/data/services.json");
+        this.servicesList = readServicesFromJson(servicePath);
         return new ArrayList<>(servicesList);
     }
 
     public List<Account> allAccount(){
-        this.accountList = readAccountFromJson("src/main/java/com/example/software_engineer/data/account.json");
+        this.accountList = readAccountFromJson(accountPath);
         return new ArrayList<>(accountList);
     }
 
     public Services spesificService(String UID){
-        this.servicesList = readServicesFromJson("src/main/java/com/example/software_engineer/data/services.json");
+        this.servicesList = readServicesFromJson(servicePath);
         for (Services service : servicesList){
             if (service.getUID().equals(UID)){
                 return service;
@@ -98,7 +100,7 @@ public class JSONRepository {
     }
 
     public Account spesificAccount(String user){
-        this.accountList = readAccountFromJson("src/main/java/com/example/software_engineer/data/account.json");
+        this.accountList = readAccountFromJson(accountPath);
         for (Account account : accountList){
             if (account.getUsername().equals(user)){
                 return account;
@@ -114,13 +116,13 @@ public class JSONRepository {
         } else if (account.equals("Admin")) {
             servicesList.remove(service);
         }
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
+        writeServicesToJSON(servicePath, servicesList);
     }
 
     public void createService(String servicesName, String description, LocalDate date, int price, String account, String UID){
         Services service = new Services(servicesName, date, price, description, account, UID);
         servicesList.add(service);
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
+        writeServicesToJSON(servicePath, servicesList);
     }
 
     public void changeService(String servicesName, String description, LocalDate date, int price, String account, String UID){
@@ -135,27 +137,27 @@ public class JSONRepository {
             spesificService(UID).setDate(date);
             spesificService(UID).setPrice(price);
         }
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
+        writeServicesToJSON(servicePath, servicesList);
     }
 
     public void addReview (String UID, Reviews reviews){
         spesificService(UID).placeReview(reviews);
-        writeServicesToJSON("src/main/java/com/example/software_engineer/data/account.json", servicesList);
+        writeServicesToJSON(servicePath, servicesList);
     }
 
     public void addInShoppingcart(String account, String UID){
         spesificAccount(account).getShopping_cart().add_services(spesificService(UID),UID);
-        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
+        writeAccountToJSON(accountPath, accountList);
     }
 
     public void deleteShoppingCart (String account){
         spesificAccount(account).getShopping_cart().delete_shoppingcart();
-        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
+        writeAccountToJSON(accountPath, accountList);
     }
 
     public void deleteOneServiceFromShoppingcart(String account, String UID){
         spesificAccount(account).getShopping_cart().delete_service(spesificService(UID), UID);
-        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
+        writeAccountToJSON(accountPath, accountList);
     }
 
     public void createOrder(String account){
@@ -163,7 +165,7 @@ public class JSONRepository {
         order.add_allServices(spesificAccount(account).getShopping_cart().getServices());
         spesificAccount(account).add_order(order);
         deleteShoppingCart(account);
-        writeAccountToJSON("src/main/java/com/example/software_engineer/data/account.json", accountList);
+        writeAccountToJSON(accountPath, accountList);
     }
 
 }

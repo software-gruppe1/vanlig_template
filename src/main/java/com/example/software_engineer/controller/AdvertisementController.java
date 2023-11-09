@@ -13,11 +13,7 @@ import java.util.List;
 @RequestMapping("/advertisement")
 public class AdvertisementController {
 
-    private final JSONRepository jsonRepository;
-
-    public AdvertisementController(JSONRepository jsonRepository) {
-        this.jsonRepository = jsonRepository;
-    }
+    private final JSONRepository jsonRepository = new JSONRepository("src/main/java/com/example/software_engineer/data/account.json", "src/main/java/com/example/software_engineer/data/services.json");
 
     @GetMapping("/services/all")
     public ResponseEntity<List<Services>> getAllAdvertisement() {
