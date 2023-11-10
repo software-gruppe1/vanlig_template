@@ -22,6 +22,13 @@ public class JSONRepository {
     private String servicePath;
     private String accountPath;
 
+    public JSONRepository(String accountPath, String servicePath, List<Account> accountList, List<Services> servicesList){
+        this.accountPath = accountPath;
+        this.servicePath = servicePath;
+        writeServicesToJSON(servicePath, servicesList);
+        writeAccountToJSON(accountPath, accountList);
+    }
+
     public JSONRepository(String accountPath, String servicePath){
         this.accountPath = accountPath;
         this.servicePath = servicePath;
