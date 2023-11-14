@@ -37,26 +37,63 @@ public class JSONRepositoryTest {
 
         jsonRepository = new JSONRepository("src/test/java/com/example/software_engineer/dataTest/accountTest.json", "src/test/java/com/example/software_engineer/dataTest/servicesTest.json", accountList, servicesList);
     }
-
-    @Test
-    public void allServicesTest(){
-        assertEquals(jsonRepository.allServices().toString(), servicesList.toString());
-    }
-
-    @Test
-    public void allAccountTest(){
-        assertEquals(jsonRepository.allAccount().toString(), accountList.toString());
-    }
-
-    @Test
-    public void spesificServiceTest(){
-        Services service = new Services();
-        for (Services obj : servicesList){
-            if(obj.getUID().equals("2")){
-                service = obj;
-            }
+    @Nested
+    class allServicesTest {
+        @Test
+        public void correctAllServices() {
+            assertEquals(jsonRepository.allServices().toString(), servicesList.toString());
         }
-        assertEquals(jsonRepository.spesificService("2").toString(), service.toString());
+
+        @Test
+        public void incorrectAllServices(){
+            assertNotEquals(jsonRepository.allServices().toString(), accountList.toString());
+        }
     }
 
+    @Nested
+    class allAccountTest {
+        @Test
+        public void correctAllAccount() {
+            assertEquals(jsonRepository.allAccount().toString(), accountList.toString());
+        }
+
+        @Test
+        void incorrectAllAccount(){
+            assertNotEquals(jsonRepository.allAccount().toString(), servicesList.toString());
+        }
+    }
+
+    @Nested
+    class spesificServiceTest {
+        @Test
+        public void correctSpesificService() {
+            assertEquals(jsonRepository.spesificService("1",1).toString(), servicesList.get(0).toString());
+        }
+        @Test
+        public void incorrectSpesificService(){
+            assertNotEquals(jsonRepository.spesificService("1",1).toString(), servicesList.get(1).toString());
+        }
+    }
+
+    @Nested
+    class spesificAccountTest {
+        @Test
+        public void correctSpesificAccount() {
+            assertEquals(jsonRepository.spesificAccount("User").toString(), accountList.get(0).toString());
+        }
+        @Test
+        public void incorrectSpesificAccount(){
+            assertNotEquals(jsonRepository.spesificAccount("User").toString(), accountList.get(1).toString());
+        }
+    }
+
+   /* @Nested
+    class deleteServiceTest{
+        @Test
+        public void isServiceDeleted(){
+            jsonRepository.deleteService("User", "2");
+            //System.out.println(jsonRepository.spesificService("2"));
+            assertNull(jsonRepository.spesificService("2",1));
+        }
+    }*/
 }
