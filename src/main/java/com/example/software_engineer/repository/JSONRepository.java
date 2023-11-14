@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class JSONRepository {
+public class  JSONRepository {
     private List<Account> accountList = new ArrayList<>();
     private List<Services> servicesList = new ArrayList<>();
     private String servicePath;
@@ -119,21 +119,23 @@ public class JSONRepository {
         writeServicesToJSON(servicePath, servicesList);
     }
 
-    public void createService(String servicesName, String description, LocalDate date, int price, String account, String UID){
-        Services service = new Services(servicesName, date, price, description, account, UID);
+    public void createService(String servicesName, String description, String location, LocalDate date, int price, String account, String UID){
+        Services service = new Services(servicesName, date, price, description, location, account, UID);
         servicesList.add(service);
         writeServicesToJSON(servicePath, servicesList);
     }
 
-    public void changeService(String servicesName, String description, LocalDate date, int price, String account, String UID){
+    public void changeService(String servicesName, String description, String lcoation, LocalDate date, int price, String account, String UID){
         if(account.equals("User") && spesificService(UID).getAccount().equals("User")){
             spesificService(UID).setServiceName(servicesName);
             spesificService(UID).setDescription(description);
+            spesificService(UID).setLocation(lcoation);
             spesificService(UID).setDate(date);
             spesificService(UID).setPrice(price);
         } else if (account.equals("Admin")) {
             spesificService(UID).setServiceName(servicesName);
             spesificService(UID).setDescription(description);
+            spesificService(UID).setLocation(lcoation);
             spesificService(UID).setDate(date);
             spesificService(UID).setPrice(price);
         }

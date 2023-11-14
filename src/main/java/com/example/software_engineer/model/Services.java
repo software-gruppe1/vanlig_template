@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Services {
-    private String serviceName, description;
+    private String serviceName, description, location;
     private LocalDate date;
     private int price;
     private ArrayList<Reviews> all_reviews = new ArrayList<>();
@@ -13,11 +13,12 @@ public class Services {
     private String UID;
 
     //konstuktør
-    public Services(String serviceName,LocalDate date, int price, String description, String account, String UID) {
+    public Services(String serviceName,LocalDate date, int price, String description, String location, String account, String UID) {
         this.serviceName = serviceName;
         this.date = date;
         this.price = price;
         this.description = description;
+        this.location = location;
         this.account = account;
         this.UID = UID;
 
@@ -69,11 +70,20 @@ public class Services {
         this.account = account;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     @Override
     public String toString() {
         return "Services{" +
                 "serviceName='" + serviceName + '\'' +
                 ", description='" + description + '\'' +
+                ", location='" + location + '\'' +
                 ", date=" + date +
                 ", price=" + price +
                 ", all_reviews=" + all_reviews +

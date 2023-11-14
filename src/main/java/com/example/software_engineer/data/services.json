@@ -1,6 +1,7 @@
 [ {
   "serviceName" : "museum of egypt",
   "description" : "A beautiful museum stolen by the british",
+  "location" : "Egypt",
   "date" : [ 2023, 12, 23 ],
   "price" : 699,
   "all_reviews" : [ ],
@@ -9,6 +10,7 @@
 }, {
   "serviceName" : "city guide in paris",
   "description" : "a wonderful guide",
+  "location" : "France",
   "date" : [ 2024, 2, 15 ],
   "price" : 999,
   "all_reviews" : [ ],
@@ -17,6 +19,7 @@
 }, {
   "serviceName" : "bungee jumping in Norway",
   "description" : "Jump to your death, it's at least fun",
+  "location" : "Norway",
   "date" : [ 2025, 6, 15 ],
   "price" : 500,
   "all_reviews" : [ ],
