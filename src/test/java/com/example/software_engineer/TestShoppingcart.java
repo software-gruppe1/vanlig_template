@@ -25,7 +25,7 @@ public class TestShoppingcart {
 
             //Lager et objekt for å bruke og teste den
             Services serviceInfo = new Services("Cowabonga", LocalDate.of(2003, 2, 15), 165,
-                    "Awesome place", "ayubs", "123DSASDsf");
+                    "Awesome place","Norway", "ayubs", "123DSASDsf");
 
             //legger til objekten inn i arraylisten
             servicesUID.add(serviceInfo.getUID());
@@ -57,7 +57,7 @@ public class TestShoppingcart {
 
             //Lager et objekt for å bruke og teste den
             Services serviceInfo1 = new Services("Cowabonga", LocalDate.of(2003, 2, 15), 165,
-                    "Awesome place", "ayubs", "123DSASDsf");
+                    "Awesome place", "Norway", "ayubs", "123DSASDsf");
 
             //legger til objekten inn i arraylisten
             servicesUID.add(serviceInfo1.getUID());
@@ -97,9 +97,9 @@ public class TestShoppingcart {
 
             //Lager et objekt for å bruke og teste den
             Services serviceInfo1 = new Services("Cowabonga", LocalDate.of(2003, 2, 15), 165,
-                    "Awesome place", "ayubs", "123DSASDsf");
+                    "Awesome place", "Norway", "ayubs", "123DSASDsf");
             Services serviceInfo2 = new Services("Bongacowa", LocalDate.of(2001, 11, 9), 5000,
-                    "horrible place", "sbuya", "321DSASDfs");
+                    "horrible place", "France", "sbuya", "321DSASDfs");
 
             //legger til objekten inn i arraylisten
             servicesUID.add(serviceInfo1.getUID());
