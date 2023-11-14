@@ -23,13 +23,13 @@ public class AdvertisementController {
 
     @PostMapping("/services")
     public ResponseEntity<Services> createService(@RequestBody Services service) {
-        jsonRepository.createService(service.getServiceName(), service.getDescription(), service.getDate(), service.getPrice(), service.getAccount(), service.getUID());
+        jsonRepository.createService(service.getServiceName(), service.getDescription(), service.getLocation(), service.getDate(), service.getPrice(), service.getAccount(), service.getUID());
         return new ResponseEntity<>(service, HttpStatus.CREATED);
     }
 
     @PutMapping("/services/{UID}")
     public ResponseEntity<Services> updateService(@PathVariable String UID, @RequestBody Services service) {
-        jsonRepository.changeService(service.getServiceName(), service.getDescription(),
+        jsonRepository.changeService(service.getServiceName(), service.getDescription(), service.getLocation(),
                 service.getDate(), service.getPrice(), service.getAccount(), UID);
         return new ResponseEntity<>(HttpStatus.OK);
     }

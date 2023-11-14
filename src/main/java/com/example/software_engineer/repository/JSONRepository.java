@@ -16,18 +16,11 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class JSONRepository {
+public class  JSONRepository {
     private List<Account> accountList = new ArrayList<>();
     private List<Services> servicesList = new ArrayList<>();
     private String servicePath;
     private String accountPath;
-
-    public JSONRepository(String accountPath, String servicePath, List<Account> accountList, List<Services> servicesList){
-        this.accountPath = accountPath;
-        this.servicePath = servicePath;
-        writeServicesToJSON(servicePath, servicesList);
-        writeAccountToJSON(accountPath, accountList);
-    }
 
     public JSONRepository(String accountPath, String servicePath){
         this.accountPath = accountPath;
@@ -96,10 +89,8 @@ public class JSONRepository {
         return new ArrayList<>(accountList);
     }
 
-    public Services spesificService(String UID, int read){
-        if(read == 1) {
-            this.servicesList = readServicesFromJson(servicePath);
-        }
+    public Services spesificService(String UID){
+        this.servicesList = readServicesFromJson(servicePath);
         for (Services service : servicesList){
             if (service.getUID().equals(UID)){
                 return service;
@@ -119,43 +110,45 @@ public class JSONRepository {
     }
 
     public void deleteService(String account, String UID){
-        if(account.equals("User") && spesificService(UID,1).getAccount().equals("User")){
-            servicesList.remove(spesificService(UID,0));
+        Services service = spesificService(UID);
+        if(account.equals("User") && service.getAccount().equals("User")){
+            servicesList.remove(service);
         } else if (account.equals("Admin")) {
-            servicesList.remove(spesificService(UID,0));
+            servicesList.remove(service);
         }
         writeServicesToJSON(servicePath, servicesList);
-        System.out.println(allServices());
     }
 
-    public void createService(String servicesName, String description, LocalDate date, int price, String account, String UID){
-        Services service = new Services(servicesName, date, price, description, account, UID);
+    public void createService(String servicesName, String description, String location, LocalDate date, int price, String account, String UID){
+        Services service = new Services(servicesName, date, price, description, location, account, UID);
         servicesList.add(service);
         writeServicesToJSON(servicePath, servicesList);
     }
 
-    public void changeService(String servicesName, String description, LocalDate date, int price, String account, String UID){
-        if(account.equals("User") && spesificService(UID,1).getAccount().equals("User")){
-            spesificService(UID,0).setServiceName(servicesName);
-            spesificService(UID,0).setDescription(description);
-            spesificService(UID,0).setDate(date);
-            spesificService(UID,0).setPrice(price);
+    public void changeService(String servicesName, String description, String lcoation, LocalDate date, int price, String account, String UID){
+        if(account.equals("User") && spesificService(UID).getAccount().equals("User")){
+            spesificService(UID).setServiceName(servicesName);
+            spesificService(UID).setDescription(description);
+            spesificService(UID).setLocation(lcoation);
+            spesificService(UID).setDate(date);
+            spesificService(UID).setPrice(price);
         } else if (account.equals("Admin")) {
-            spesificService(UID,0).setServiceName(servicesName);
-            spesificService(UID,0).setDescription(description);
-            spesificService(UID,0).setDate(date);
-            spesificService(UID,0).setPrice(price);
+            spesificService(UID).setServiceName(servicesName);
+            spesificService(UID).setDescription(description);
+            spesificService(UID).setLocation(lcoation);
+            spesificService(UID).setDate(date);
+            spesificService(UID).setPrice(price);
         }
         writeServicesToJSON(servicePath, servicesList);
     }
 
     public void addReview (String UID, Reviews reviews){
-        spesificService(UID,1).placeReview(reviews);
+        spesificService(UID).placeReview(reviews);
         writeServicesToJSON(servicePath, servicesList);
     }
 
     public void addInShoppingcart(String account, String UID){
-        spesificAccount(account).getShopping_cart().add_services(spesificService(UID,1),UID);
+        spesificAccount(account).getShopping_cart().add_services(spesificService(UID),UID);
         writeAccountToJSON(accountPath, accountList);
     }
 
@@ -165,7 +158,7 @@ public class JSONRepository {
     }
 
     public void deleteOneServiceFromShoppingcart(String account, String UID){
-        spesificAccount(account).getShopping_cart().delete_service(spesificService(UID,1), UID);
+        spesificAccount(account).getShopping_cart().delete_service(spesificService(UID), UID);
         writeAccountToJSON(accountPath, accountList);
     }
 
