@@ -38,13 +38,9 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    /* Kommentert ut for øyeblikket.
     @PostMapping("/order")
     public ResponseEntity<?> createOrder(@RequestBody String accountUsername) {
-        Order order = jsonRepository.createOrder(accountUsername);
-        return new ResponseEntity<>(order, HttpStatus.CREATED);
+        jsonRepository.createOrder(accountUsername);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    */
-
-
 }
