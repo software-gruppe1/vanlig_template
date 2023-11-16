@@ -42,7 +42,7 @@ public class AdvertisementController {
 
     @GetMapping("/{UID}")
     public ResponseEntity<Services> getSpecificService(@PathVariable String UID) {
-        Services service = jsonRepository.spesificService(UID,1);
+        Services service = jsonRepository.spesificService(UID);
         if (service != null) {
             return new ResponseEntity<>(service, HttpStatus.OK);
         } else {
