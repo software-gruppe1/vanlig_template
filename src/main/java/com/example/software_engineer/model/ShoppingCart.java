@@ -13,11 +13,6 @@ public class ShoppingCart {
     public ShoppingCart(){
     }
 
-    public ShoppingCart(ArrayList<String> servicesUID){
-        this.services = servicesUID;
-    }
-
-
     public double getTotalPrice() {return totalPrice;}
 
     public void setTotalPrice(double totalPris) {this.totalPrice = totalPris;}
