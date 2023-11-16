@@ -1,21 +1,21 @@
 [ {
   "fullName" : "Ole Nordmann",
-  "password" : "User1234",
+  "password" : "User123",
   "email" : "ole_nordmann@gmail.com",
   "username" : "User",
   "shopping_cart" : {
     "totalPrice" : 0.0,
     "services" : [ ]
   },
-  "order" : [ ]
+  "orders" : [ ]
 }, {
   "fullName" : "Ali A",
-  "password" : "Admin1234",
+  "password" : "Admin123",
   "email" : "ali_a@gmail.com",
   "username" : "Admin",
   "shopping_cart" : {
     "totalPrice" : 0.0,
     "services" : [ ]
   },
-  "order" : [ ]
+  "orders" : [ ]
 } ]
