@@ -1,6 +1,6 @@
 [ {
   "fullName" : "Ole Nordmann",
-  "password" : "User123",
+  "password" : "User1234",
   "email" : "ole_nordmann@gmail.com",
   "username" : "User",
   "shopping_cart" : {
@@ -10,7 +10,7 @@
   "order" : [ ]
 }, {
   "fullName" : "Ali A",
-  "password" : "Admin123",
+  "password" : "Admin1234",
   "email" : "ali_a@gmail.com",
   "username" : "Admin",
   "shopping_cart" : {
