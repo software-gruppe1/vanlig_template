@@ -1,12 +1,18 @@
 package com.example.software_engineer.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Reviews {
     private String name;
     private String review;
     private int rate;
 
 
-    public Reviews(String name, String review, int rate) {
+    @JsonCreator
+    public Reviews(@JsonProperty("name") String name,
+                   @JsonProperty("review") String review,
+                   @JsonProperty("rate") int rate) {
         this.name = name;
         this.review = review;
         this.rate = rate;
@@ -41,5 +47,14 @@ public class Reviews {
         else {
             this.rate = rate;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Reviews{" +
+                "name='" + name + '\'' +
+                ", review='" + review + '\'' +
+                ", rate=" + rate +
+                '}';
     }
 }

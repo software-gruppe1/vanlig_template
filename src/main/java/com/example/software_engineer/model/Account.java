@@ -1,15 +1,23 @@
 package com.example.software_engineer.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Account {
     private String fullName, password, email;
+
     private ShoppingCart shopping_cart = new ShoppingCart();
     private String username;
-    private ArrayList<Order> orders = new ArrayList<>();  //MAY BE FINAL
+    //@JsonDeserialize(using = OrderDeserializer.class)
+    private List<Order> orders = new ArrayList<>();  //MAY BE FINAL
 
     @JsonCreator
     public Account(@JsonProperty("fullName") String fullName,
@@ -64,6 +72,7 @@ public class Account {
         this.username = username;
     }
 
+    @JsonProperty("orders")
     public ArrayList<Order> getOrder() {
         return new ArrayList<>(orders);
     }
@@ -71,6 +80,20 @@ public class Account {
     public void add_order(Order order) {
         orders.add(order);
     }
+
+    @JsonSetter("orders")
+    public void setOrdersFromJsonNode(JsonNode jsonNode) throws JsonProcessingException {
+        if (jsonNode.isArray()) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new JavaTimeModule());
+
+            for (JsonNode orderNode : jsonNode) {
+                Order order = objectMapper.treeToValue(orderNode, Order.class);
+                orders.add(order);
+            }
+        }
+    }
+
 
     @Override
     public String toString() {
@@ -83,4 +106,6 @@ public class Account {
                 ", orders=" + orders +
                 '}';
     }
+
+
 }
