@@ -7,7 +7,7 @@
     "totalPrice" : 0.0,
     "services" : [ ]
   },
-  "order" : [ ]
+  "orders" : [ ]
 }, {
   "fullName" : "Ali A",
   "password" : "Admin123",
@@ -17,5 +17,5 @@
     "totalPrice" : 0.0,
     "services" : [ ]
   },
-  "order" : [ ]
+  "orders" : [ ]
 } ]

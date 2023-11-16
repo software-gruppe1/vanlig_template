@@ -1,5 +1,8 @@
 package com.example.software_engineer.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -7,11 +10,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Order {
     private int orderId;
     private double totalPrice;
-    private ArrayList<String> servicesUID = new ArrayList<>(); //MAY BE FINAL
+    private ArrayList<String> services = new ArrayList<>();
+
     private LocalDate orderDate;
     private static final AtomicInteger count = new AtomicInteger(0);
 
-    public Order(double totalPrice, LocalDate orderDate){
+    @JsonCreator
+    public Order(@JsonProperty("totalPrice") double totalPrice,
+                 @JsonProperty("orderDate") LocalDate orderDate){
         this.orderId = count.incrementAndGet();
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
@@ -24,9 +30,10 @@ public class Order {
     public double getTotalPrice() {return totalPrice;}
     public void setTotalPrice(double totalPrice) {this.totalPrice = totalPrice;}
 
-    public ArrayList<String> getServices() {return new ArrayList<>(servicesUID) ;}
-    public void add_allServices(ArrayList<String> services) {
-        servicesUID.addAll(services);
+    public ArrayList<String> getServices() {return new ArrayList<>(services) ;}
+
+    public void add_allServices(ArrayList<String> service) {
+        services.addAll(service);
 
     }
 

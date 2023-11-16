@@ -3,10 +3,7 @@ package com.example.software_engineer.repository;
 import com.example.software_engineer.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -27,13 +24,21 @@ public class  JSONRepository {
         this.servicePath = servicePath;
     }
 
+    public JSONRepository(String accountPath, String servicePath, List<Account> accountList, List<Services> servicesList){
+        this.accountPath = accountPath;
+        this.servicePath = servicePath;
+        writeAccountToJSON(accountPath, accountList);
+        writeServicesToJSON(servicePath, servicesList);
+    }
+
     public List<Account> readAccountFromJson(String filepath){
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.registerModule(new JavaTimeModule());
             Account[] characterArray = objectMapper.readValue(new File(filepath), Account[].class);
-
-            return Arrays.asList(characterArray);
+            ArrayList<Account> account = new ArrayList<>(Arrays.asList(characterArray));
+            //System.out.println(account);
+            return account;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -46,7 +51,7 @@ public class  JSONRepository {
             objectMapper.registerModule(new JavaTimeModule());
             Services[] characterArray = objectMapper.readValue(new File(filepath), Services[].class);
 
-            return Arrays.asList(characterArray);
+            return new ArrayList<Services>(Arrays.asList(characterArray));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,7 +116,7 @@ public class  JSONRepository {
 
     public void deleteService(String account, String UID){
         Services service = spesificService(UID);
-        if(account.equals("User") && service.getAccount().equals("User")){
+        if(service.getAccount().equals("User") && account.equals("User")){
             servicesList.remove(service);
         } else if (account.equals("Admin")) {
             servicesList.remove(service);
@@ -125,21 +130,23 @@ public class  JSONRepository {
         writeServicesToJSON(servicePath, servicesList);
     }
 
-    public void changeService(String servicesName, String description, String lcoation, LocalDate date, int price, String account, String UID){
+    public void changeService(String servicesName, String description, String location, LocalDate date, int price, String account, String UID){
+        Services service = spesificService(UID);
         if(account.equals("User") && spesificService(UID).getAccount().equals("User")){
-            spesificService(UID).setServiceName(servicesName);
-            spesificService(UID).setDescription(description);
-            spesificService(UID).setLocation(lcoation);
-            spesificService(UID).setDate(date);
-            spesificService(UID).setPrice(price);
+            service.setServiceName(servicesName);
+            service.setDescription(description);
+            service.setLocation(location);
+            service.setDate(date);
+            service.setPrice(price);
         } else if (account.equals("Admin")) {
-            spesificService(UID).setServiceName(servicesName);
-            spesificService(UID).setDescription(description);
-            spesificService(UID).setLocation(lcoation);
-            spesificService(UID).setDate(date);
-            spesificService(UID).setPrice(price);
+            service.setServiceName(servicesName);
+            service.setDescription(description);
+            service.setLocation(location);
+            service.setDate(date);
+            service.setPrice(price);
         }
         writeServicesToJSON(servicePath, servicesList);
+        System.out.println("Changed to: "+spesificService(UID));
     }
 
     public void addReview (String UID, Reviews reviews){
@@ -148,8 +155,10 @@ public class  JSONRepository {
     }
 
     public void addInShoppingcart(String account, String UID){
-        spesificAccount(account).getShopping_cart().add_services(spesificService(UID),UID);
+        Account account1 = spesificAccount(account);
+        account1.getShopping_cart().add_services(spesificService(UID),UID);
         writeAccountToJSON(accountPath, accountList);
+        //System.out.println(spesificAccount("User"));
     }
 
     public void deleteShoppingCart (String account){
@@ -166,8 +175,10 @@ public class  JSONRepository {
         Order order = new Order(spesificAccount(account).getShopping_cart().getTotalPrice(), LocalDate.now());
         order.add_allServices(spesificAccount(account).getShopping_cart().getServices());
         spesificAccount(account).add_order(order);
+        writeAccountToJSON(accountPath, accountList);
         deleteShoppingCart(account);
         writeAccountToJSON(accountPath, accountList);
+        System.out.println(spesificAccount("Admin"));
     }
 
 }
