@@ -2,6 +2,7 @@ package com.example.software_engineer.controller;
 
 
 import com.example.software_engineer.model.Account;
+import com.example.software_engineer.model.Services;
 import com.example.software_engineer.repository.JSONRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,5 +43,10 @@ public class UserController {
     public ResponseEntity<?> createOrder(@RequestBody String accountUsername) {
         jsonRepository.createOrder(accountUsername);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    @DeleteMapping("/services/{UID}")
+    public ResponseEntity<Services> deleteService(@PathVariable String UID) {
+        jsonRepository.deleteService("User", UID);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
