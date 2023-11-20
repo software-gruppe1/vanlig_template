@@ -28,10 +28,4 @@ public class AdminController {
         List<Account> accounts = jsonRepository.allAccount();
         return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
-
-    @DeleteMapping("/services/{UID}")
-    public ResponseEntity<Services> deleteService(@PathVariable String UID) {
-        jsonRepository.deleteService("Admin", UID);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }

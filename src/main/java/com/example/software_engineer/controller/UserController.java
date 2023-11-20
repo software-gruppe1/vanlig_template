@@ -15,38 +15,39 @@ public class UserController {
     private final JSONRepository jsonRepository = new JSONRepository("src/main/java/com/example/software_engineer/data/account.json", "src/main/java/com/example/software_engineer/data/services.json");
 
 
+
     @GetMapping("/account/{username}")
     public ResponseEntity<Account> getAccount(@PathVariable String username) {
         Account account = jsonRepository.spesificAccount(username);
         return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
-    @PostMapping("/cart/{UID}")
-    public ResponseEntity<Account> addToShoppingCart(@RequestBody String account, @PathVariable String UID) {
-        jsonRepository.addInShoppingcart(account, UID);
+    @PostMapping("/cart/{username}/{UID}")
+    public ResponseEntity<Account> addToShoppingCart(@PathVariable String username, @PathVariable String UID) {
+        jsonRepository.addInShoppingcart(username, UID);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/cart/{UID}")
-    public ResponseEntity<Account> removeFromShoppingCart(@RequestBody String account, @PathVariable String UID) {
-        jsonRepository.deleteOneServiceFromShoppingcart(account, UID);
+    @DeleteMapping("/cart/{username}/{UID}")
+    public ResponseEntity<Account> removeFromShoppingCart(@PathVariable String username, @PathVariable String UID) {
+        jsonRepository.deleteOneServiceFromShoppingcart(username, UID);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/cart")
-    public ResponseEntity<Account> clearShoppingCart(@RequestBody String account) {
-        jsonRepository.deleteShoppingCart(account);
+    @DeleteMapping("/cart/{username}")
+    public ResponseEntity<Account> clearShoppingCart(@PathVariable String username) {
+        jsonRepository.deleteShoppingCart(username);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/order")
-    public ResponseEntity<?> createOrder(@RequestBody String accountUsername) {
-        jsonRepository.createOrder(accountUsername);
+    @PostMapping("/order/{username}")
+    public ResponseEntity<?> createOrder(@PathVariable String username) {
+        jsonRepository.createOrder(username);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @DeleteMapping("/services/{UID}")
-    public ResponseEntity<Services> deleteService(@PathVariable String UID) {
-        jsonRepository.deleteService("User", UID);
+    @DeleteMapping("/services/{username}/{UID}")
+    public ResponseEntity<Services> deleteService(@PathVariable String username, @PathVariable String UID) {
+        jsonRepository.deleteService(username, UID);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
