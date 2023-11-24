@@ -13,13 +13,16 @@ public class ServiceTest {
     class placeReviewTest{
         @Test
         public void isPlaceReviewMethodWorking() {
-            // Opprett en ny Review-instans
-            Services review = new Services();
-            // Legg til en anmeldelse
+            // Opprett en ny service-instans
+            Services service = new Services();
+            // lage en anmeldelse
             Reviews review_text = new Reviews("Joe", "Best service!", 10);
+
+            //legge_til_anmeldelse
+            service.placeReview(review_text);
+
             // Sjekk at anmeldelsen ble lagt til
-            review.placeReview(review_text);
-            Assertions.assertEquals("Best service!", review.getAll_reviews().get(0).getReview());
+            Assertions.assertEquals("Best service!", service.getAll_reviews().get(0).getReview());
         }
     }
 }
