@@ -1,14 +1,13 @@
 package com.example.software_engineer;
 
 import com.example.software_engineer.model.Reviews;
-import com.example.software_engineer.model.Services;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class Reviewstest {
+public class ReviewsTest {
     @Nested
     class placeRatingTest1{
         @Test
