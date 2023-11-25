@@ -67,7 +67,7 @@ public class FileUploadController {
     public String deleteFile(@PathVariable String fileName) {
 
         // Define the relative path with the file name
-        String relativePath = "src/main/resources/static/img/" + fileName;
+        String relativePath = "src/main/resources/static/img/" + fileName+".png";
 
         // Resolve the path relative to the current working directory
         File fileToDelete = new File(relativePath).getAbsoluteFile();
