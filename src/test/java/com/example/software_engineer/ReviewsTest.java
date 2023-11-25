@@ -25,6 +25,7 @@ public class ReviewsTest {
 
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
                 review_rating.setRate(11);
+                review_rating.setRate(-1);
             });
 
             // Optionally, you can assert details about the exception, if needed
