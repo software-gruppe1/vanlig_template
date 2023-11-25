@@ -1,7 +1,6 @@
 package com.example.software_engineer.controller;
 
-import jakarta.annotation.Resource;
-import org.springframework.core.io.ClassPathResource;
+
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,13 +52,10 @@ public class FileUploadController {
         try {
             Path file = rootLocation.resolve(filename);
             FileSystemResource resource = new FileSystemResource(file);
-            System.out.println(resource.isReadable());
-            System.out.println(file);
 
             if (resource.exists() || resource.isReadable()) {
                 return ResponseEntity.ok().body(resource);
             } else {
-                System.out.println("not ok");
                 return ResponseEntity.notFound().build();
             }
         } catch (Exception e) {
@@ -67,4 +63,30 @@ public class FileUploadController {
         }
     }
 
+    @DeleteMapping("/delete-image/{fileName}")
+    public String deleteFile(@PathVariable String fileName) {
+
+        // Define the relative path with the file name
+        String relativePath = "src/main/resources/static/img/" + fileName;
+
+        // Resolve the path relative to the current working directory
+        File fileToDelete = new File(relativePath).getAbsoluteFile();
+        System.out.println(fileToDelete.exists());
+
+        // Check if the file exists
+        if (!fileToDelete.exists()) {
+            System.out.println("File not found");
+            return "File not found";
+        }
+
+        // Attempt to delete the file
+        if (fileToDelete.delete()) {
+            System.out.println("File deleted successfully");
+            return "File deleted successfully";
+        } else {
+            System.out.println("Failed to delete the file");
+            return "Failed to delete the file";
+        }
+    }
 }
+
