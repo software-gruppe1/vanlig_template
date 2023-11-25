@@ -173,7 +173,11 @@ public class  JSONRepository {
 
     public void createOrder(String account){
         Order order = new Order(spesificAccount(account).getShopping_cart().getTotalPrice(), LocalDate.now());
-        order.add_allServices(spesificAccount(account).getShopping_cart().getServices());
+        ArrayList<OrderServiceDetail> serviceDetails = new ArrayList<>();
+        for(String service : spesificAccount(account).getShopping_cart().getServices()){
+            serviceDetails.add(new OrderServiceDetail(spesificService(service).getServiceName(), spesificService(service).getPrice()));
+        }
+        order.add_allServices(serviceDetails);
         spesificAccount(account).add_order(order);
         writeAccountToJSON(accountPath, accountList);
         deleteShoppingCart(account);

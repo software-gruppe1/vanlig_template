@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Order {
     private int orderId;
     private double totalPrice;
-    private ArrayList<String> services = new ArrayList<>();
+    private ArrayList<OrderServiceDetail> services = new ArrayList<>();
 
     private LocalDate orderDate;
     private static final AtomicInteger count = new AtomicInteger(0);
@@ -30,9 +30,9 @@ public class Order {
     public double getTotalPrice() {return totalPrice;}
     public void setTotalPrice(double totalPrice) {this.totalPrice = totalPrice;}
 
-    public ArrayList<String> getServices() {return new ArrayList<>(services) ;}
+    public ArrayList<OrderServiceDetail> getServices() {return new ArrayList<>(services) ;}
 
-    public void add_allServices(ArrayList<String> service) {
+    public void add_allServices(ArrayList<OrderServiceDetail> service) {
         services.addAll(service);
 
     }

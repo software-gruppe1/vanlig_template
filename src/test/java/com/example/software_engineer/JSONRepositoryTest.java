@@ -195,9 +195,12 @@ public class JSONRepositoryTest {
         public void isOrderCreated(){
             jsonRepository.addInShoppingcart("Admin", "2");
             jsonRepository.addInShoppingcart("Admin", "3");
-            String shoppingcart = jsonRepository.spesificAccount("Admin").getShopping_cart().getServices().toString();
+            ArrayList<OrderServiceDetail> orderServiceDetails = new ArrayList<>();
+            orderServiceDetails.add(new OrderServiceDetail("city guide in paris", 999));
+            orderServiceDetails.add(new OrderServiceDetail("bungee jumping in Norway", 500));
             jsonRepository.createOrder("Admin");
-            assertEquals(shoppingcart.toString(), jsonRepository.spesificAccount("Admin").getOrder().get(0).getServices().toString());
+            assertEquals(orderServiceDetails.toString(), jsonRepository.spesificAccount("Admin").getOrder().get(0).getServices().toString());
+            assertEquals(1499, jsonRepository.spesificAccount("Admin").getOrder().get(0).getTotalPrice());
         }
     }
 }
