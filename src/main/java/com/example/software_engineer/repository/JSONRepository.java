@@ -3,6 +3,8 @@ package com.example.software_engineer.repository;
 import com.example.software_engineer.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 import java.io.File;
@@ -12,13 +14,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+@Repository
 public class  JSONRepository {
     private List<Account> accountList = new ArrayList<>();
     private List<Services> servicesList = new ArrayList<>();
     private String servicePath;
     private String accountPath;
 
+    @Autowired
     public JSONRepository(String accountPath, String servicePath){
         this.accountPath = accountPath;
         this.servicePath = servicePath;

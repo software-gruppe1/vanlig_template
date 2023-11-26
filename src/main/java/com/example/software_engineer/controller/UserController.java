@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserController {
 
-    private final JSONRepository jsonRepository = new JSONRepository("src/main/java/com/example/software_engineer/data/account.json", "src/main/java/com/example/software_engineer/data/services.json");
+    //private final JSONRepository jsonRepository = new JSONRepository("src/main/java/com/example/software_engineer/data/account.json", "src/main/java/com/example/software_engineer/data/services.json");
 
-
+    private final JSONRepository jsonRepository;
+    public UserController(JSONRepository jsonRepository) {
+        this.jsonRepository = jsonRepository;
+    }
 
     @GetMapping("/account/{username}")
     public ResponseEntity<Account> getAccount(@PathVariable String username) {
