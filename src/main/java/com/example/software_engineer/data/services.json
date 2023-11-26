@@ -25,4 +25,40 @@
   "all_reviews" : [ ],
   "account" : "Admin",
   "uid" : "3"
+}, {
+  "serviceName": "venetian gondola tour",
+  "description": "romantic waterways of Venice",
+  "location": "Italy",
+  "date": [2024, 4, 12],
+  "price": 300,
+  "all_reviews": [],
+  "account": "User",
+  "uid": "4"
+}, {
+  "serviceName": "mogadishu historical landmarks",
+  "description": "exploring Somalia's rich history",
+  "location": "Somalia",
+  "date": [2024, 6, 15],
+  "price": 450,
+  "all_reviews": [],
+  "account": "User",
+  "uid": "5"
+}, {
+  "serviceName": "kyoto temple retreat",
+  "description": "peaceful meditation in ancient temples",
+  "location": "Japan",
+  "date": [2024, 7, 22],
+  "price": 650,
+  "all_reviews": [],
+  "account": "Admin",
+  "uid": "6"
+}, {
+  "serviceName": "patagonia hiking expedition",
+  "description": "breathtaking trails and natural beauty",
+  "location": "Argentina",
+  "date": [2024, 8, 30],
+  "price": 1200,
+  "all_reviews": [],
+  "account": "User",
+  "uid": "7"
 } ]
