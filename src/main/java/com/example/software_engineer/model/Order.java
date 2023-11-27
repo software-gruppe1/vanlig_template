@@ -43,9 +43,6 @@ public class Order {
 
 
 
-        //https://www.geeksforgeeks.org/copy-elements-of-one-arraylist-to-another-arraylist-in-java/
-
-        //empty_shoppingcart
 
 
 
