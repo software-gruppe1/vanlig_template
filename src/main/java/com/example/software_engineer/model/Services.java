@@ -1,7 +1,7 @@
 package com.example.software_engineer.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 
 public class Services {
@@ -91,6 +91,6 @@ public class Services {
                 ", UID='" + UID + '\'' +
                 '}';
     }
-    //TODO  LAGE METODER: OPPRETTE, ENDRE, SLETTE
+
 }
 

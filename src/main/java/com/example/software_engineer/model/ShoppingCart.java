@@ -21,9 +21,6 @@ public class ShoppingCart {
         services.add(serviceID);
         totalPrice += service.getPrice();
     }
-    //TODO add_services metoden bør gjøre det sånn at totalsummen blir endret
-    //TODO lage en metode for å slette individuelle services i shoppingcarten
-    //TODO lage en metode for å for å slette ALLE servcies i shoppingcarten
 
     public void delete_service(Services service, String serviceID){
         services.remove(serviceID);
