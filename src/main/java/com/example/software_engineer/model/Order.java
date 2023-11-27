@@ -40,7 +40,7 @@ public class Order {
     public LocalDate getOrderDate() {return orderDate;}
     public void setOrderDate(LocalDate orderDate) {this.orderDate = orderDate;}
 
-    //TODO Metode som overfører data fra shoppingcart til ordre og tømmer shoppingcarten.
+
 
 
         //https://www.geeksforgeeks.org/copy-elements-of-one-arraylist-to-another-arraylist-in-java/
