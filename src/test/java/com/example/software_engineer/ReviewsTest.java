@@ -28,7 +28,7 @@ public class ReviewsTest {
                 review_rating.setRate(-1);
             });
 
-            // Optionally, you can assert details about the exception, if needed
+            // Her er en assert for å sjekke om vi får forventet verdier ut.
             Assertions.assertEquals("You can only rate from 1 to 10!", exception.getMessage());
         }
 
